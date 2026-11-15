@@ -1,0 +1,12 @@
+api/config/config.php
+config.php
+node_modules/
+web/dist/
+dist/
+backups/
+storage/
+*.log
+.DS_Store
+.env
+.mysql/
+deploy/

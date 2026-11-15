@@ -1,0 +1,14 @@
+# Roteia /api/* para index.php (exceto arquivos reais, que ficam bloqueados abaixo)
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L,QSA]
+</IfModule>
+
+# Repassa o cabeçalho Authorization/CSRF corretamente em algumas hospedagens
+<IfModule mod_setenvif.c>
+    SetEnvIf X-CSRF-Token "(.+)" HTTP_X_CSRF_TOKEN=$1
+</IfModule>

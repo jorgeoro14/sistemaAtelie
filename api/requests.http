@@ -1,0 +1,72 @@
+### Coleção de exemplos (VS Code REST Client / JetBrains HTTP Client)
+@base = http://localhost:5173/api
+
+### 1. Login (guarda o cookie de sessão automaticamente)
+# @name login
+POST {{base}}/login
+Content-Type: application/json
+
+{ "usuario": "admin", "senha": "1234" }
+
+###
+@csrf = {{login.response.body.csrf_token}}
+
+### 2. Trocar senha (obrigatória no 1º login)
+POST {{base}}/me/senha
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{ "senha_atual": "1234", "nova_senha": "senha-forte-123", "confirmacao": "senha-forte-123" }
+
+### 3. Cadastrar cliente
+POST {{base}}/clientes
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{ "nome": "Maria Souza", "telefone": "(45) 99999-8888", "observacoes": "Prefere WhatsApp" }
+
+### 4. Criar OS
+POST {{base}}/os
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{
+  "cliente_id": 1, "prioridade": "alta", "data_prevista": "2026-12-01",
+  "itens": [
+    { "servico_id": 1, "descricao": "Barra da calça jeans", "valor_centavos": 3500 },
+    { "servico_id": 2, "descricao": "Apertar cintura do vestido", "valor_centavos": 6000 }
+  ]
+}
+
+### 5. Marcar pronto → entregue
+PATCH {{base}}/os/1/status
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{ "status": "pronto" }
+
+###
+PATCH {{base}}/os/1/status
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{ "status": "entregue" }
+
+### 6. Pagamento único
+POST {{base}}/os/1/pagamento
+Content-Type: application/json
+X-CSRF-Token: {{csrf}}
+
+{ "forma": "pix", "data_pagamento": "2026-11-14" }
+
+### 7. Listar OS atrasadas
+GET {{base}}/os?atrasadas=1
+
+### 8. Agenda do mês
+GET {{base}}/agenda?de=2026-11-01&ate=2026-11-30
+
+### 9. Relatórios
+GET {{base}}/relatorios/resumo?de=2026-11-01&ate=2026-11-30
+
+### 10. Sem login → 401 (teste de segurança)
+GET http://localhost:8000/api/clientes
