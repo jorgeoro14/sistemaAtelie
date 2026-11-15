@@ -46,8 +46,8 @@ Esperava-se substituir o caderno de anotações de um ateliê de costura por um 
 * Funcionalidades: login com bloqueio, troca obrigatória de senha, gestão de usuários, clientes (com WhatsApp), costureiras, catálogo de serviços, OS com vários serviços e total automático, status e pagamento único, agenda (mês/semana/dia), painel do dia, dashboard de desempenho e exportação da OS em PDF.
 * Documentação técnica completa (requisitos, API, ER, classes, deploy e testes).
 * Teste automatizado da API com 56 verificações aprovadas (`api/bin/teste_api.py`) e validação das telas no navegador.
-* Link do software: **[PREENCHER URL publicada]**
-* Link do GitHub com o fonte: **[PREENCHER]**
+* Link do software: **https://vulpesdigital.com.br/atelie**
+* Link do GitHub com o fonte: **https://github.com/jorgeoro14/sistemaAtelie**
 * **[Após o teste real: número de OS cadastradas, feedback da usuária]**
 
 ---
@@ -82,5 +82,5 @@ Ver [`ER.md`](ER.md). *[Inserir imagem do diagrama com legenda: "Figura X — Di
 
 ## J.f Link do software e do GitHub
 
-* Software: **[PREENCHER]**
-* GitHub: **[PREENCHER]**
+* Software: **https://vulpesdigital.com.br/atelie**
+* GitHub: **https://github.com/jorgeoro14/sistemaAtelie**
