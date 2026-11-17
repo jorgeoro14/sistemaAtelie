@@ -46,7 +46,7 @@ Base: `/api` (mesmo domínio do front). JSON em UTF-8.
 
 * `prioridade` é `normal | alta | urgente` (o booleano `true/false` ainda é aceito: `true` = `alta`).
 * Pagamento é **único**: rotas `POST/DELETE /os/{id}/pagamento` (singular); não existe `/pagamentos/{pid}`.
-* `situacao_pagamento` é apenas `pendente` ou `pago`.
+* `situacao_pagamento` é apenas `pendente` ou `pago`; `paga` é o booleano equivalente (`true` quando há pagamento registrado).
 
 ### Filtros de `GET /os`
 
@@ -72,7 +72,7 @@ Content-Type: application/json
 }
 ```
 
-Resposta **201**: OS completa com `numero`, `total_centavos` (9500), `status` (`recebido`), `situacao_pagamento` (`pendente`), `atrasada` (false) e `itens`.
+Resposta **201**: OS completa com `numero`, `total_centavos` (9500), `status` (`recebido`), `situacao_pagamento` (`pendente`), `paga` (false), `atrasada` (false) e `itens`.
 
 ### Transições de status (`PATCH /os/{id}/status`)
 

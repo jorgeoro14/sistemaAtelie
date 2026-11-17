@@ -18,7 +18,7 @@ export const definirAoPerderSessao = (fn) => { aoPerderSessao = fn; };
 
 export function qs(params = {}) {
   const p = new URLSearchParams();
-  Object.entries(params).forEach(([k, v]) => {
+  Object.entries(params || {}).forEach(([k, v]) => {
     if (v !== undefined && v !== null && v !== '' && v !== false) p.set(k, v === true ? '1' : String(v));
   });
   const s = p.toString();

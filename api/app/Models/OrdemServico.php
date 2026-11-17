@@ -121,6 +121,7 @@ final class OrdemServico
             'forma_pagamento' => $this->formaPagamento?->value,
             'data_pagamento' => $this->dataPagamento,
             'situacao_pagamento' => $this->situacaoPagamento(),
+            'paga' => $this->paga(),
             'atrasada' => $this->atrasada(),
             'resumo_servicos' => $this->resumoServicos,
             'criado_por' => $this->criadoPor,
